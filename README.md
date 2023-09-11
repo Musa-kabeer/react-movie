@@ -1,11 +1,11 @@
-## MOVIE WEBSITE
+# MOVIE WEBSITE
 
-# TECHNOLOGY
+## TECHNOLOGY
 - Vite + React
 - React Router Dom
 - React Query
 - themoviedb API
 - Styled Components
 
-# Consist
+## Consist
 - Pagination
