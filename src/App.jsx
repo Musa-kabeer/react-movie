@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SearchContextProvider } from "./context/searchContext";
 
 import AppLayout from "./ui/AppLayout";
-// import Details from "./pages/Details";
+import Details from "./pages/Details";
 import PopularPage from "./pages/Popular";
 import TopRatedPage from "./pages/TopRated";
 import UpComingPage from "./pages/UpComing";
@@ -32,7 +32,7 @@ const App = () => {
               <Route path="upcoming" element={<UpComingPage />} />
               <Route path="now-playing" element={<NowPlayingPage />} />
             </Route>
-            {/* <Route path="/movie/:movieId" element={<Details />} /> */}
+            <Route path="/movie/:movieId" element={<Details />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

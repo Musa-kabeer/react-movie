@@ -6,7 +6,7 @@ export const useMovie = () => {
   const { movieId } = useParams();
 
   const { isLoading: isLoadingMovie, data: movie } = useQuery({
-    queryKey: ["now_playing", movieId],
+    queryKey: ["search", movieId],
     queryFn: () => getMovieById(movieId),
   });
 

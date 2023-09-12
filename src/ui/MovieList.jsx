@@ -57,7 +57,7 @@ const MovieList = ({ movie }) => {
     setShow(false);
   }
   function handleNavigate() {
-    return navigate(`movie/${id}`);
+    return navigate(`/movie/${id}`);
   }
 
   return (

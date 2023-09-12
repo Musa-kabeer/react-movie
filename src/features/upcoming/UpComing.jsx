@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { useUpComing } from "./useUpComing";
+import { useUpComing } from "./useUpcoming";
 import Heading from "../../ui/Heading";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";

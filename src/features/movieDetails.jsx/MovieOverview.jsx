@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { AiFillPlayCircle } from "react-icons/ai";
-import Lists from "../../ui/Lists";
+import { calculateMoney } from "../../utils/formatMoney";
 
 const StyledMovieOverview = styled.div`
   background-image: url(${(props) => props.$url});
@@ -42,27 +42,21 @@ const MovieOverview = ({ movie }) => {
     backdrop_path,
     budget,
     genres,
-    original_language,
     original_title,
-    overview,
-    popularity,
     poster_path,
-    production_companies,
     production_countries,
     release_date,
     revenue,
     runtime,
     spoken_languages,
     status,
-    tagline,
-    vote_average,
-    vote_count,
   } = movie;
 
   const durationHr = `${Math.floor(runtime / 60)}hr`;
   const durationmin = `${runtime % 60}min`;
-
+  const date = release_date.split("-")[0];
   const back_image = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
+
   return (
     <StyledMovieOverview $url={back_image}>
       <StyledMovieImage>
@@ -73,33 +67,34 @@ const MovieOverview = ({ movie }) => {
       </StyledMovieImage>
 
       <StyledMovieContent>
-        <div>Title: {original_title}</div>
-        <div>Date: {release_date}</div>
+        <h2>
+          {original_title} ({date}){" "}
+          <span style={{ fontSize: "12px", color: "orange" }}>
+            {durationHr} : {durationmin}
+          </span>
+        </h2>
         <div>
-          Durations: {durationHr} : {durationmin}
+          Genres:
+          {genres.map((genre, i) => (
+            <span key={i + 1}> {genre.name} </span>
+          ))}
         </div>
         <div>
-          Genres: {genres[0]?.name} {genres[1]?.name}
+          Country:
+          {production_countries.map((country, i) => (
+            <span key={i + 1}> {country.name} </span>
+          ))}
         </div>
+        <div>Budget: {calculateMoney(budget)}</div>
+        <div>Revenue: {calculateMoney(revenue)}</div>
+        <div>Status: {status}👍</div>
         <div>
-          Country: {production_countries[0]?.name}{" "}
-          {production_countries[1]?.name}
+          Language:
+          {spoken_languages.map((lang, i) => (
+            <span key={i + 1}> {lang.english_name} </span>
+          ))}
         </div>
-        <div>Year: {release_date.split("-")[0]}</div>
-        {/* <div>
-          <div>
-            <h3>Adebayo Tijani</h3>
-            <p>Director, Writer</p>
-          </div>
-          <div>
-            <h3>Tope Adebayo</h3>
-            <p>Director</p>
-          </div>
-          <div>
-            <h3>Femi Adebayo</h3>
-            <p>Writer</p>
-          </div>
-        </div>
+
         <span>
           <button
             style={{
@@ -115,7 +110,7 @@ const MovieOverview = ({ movie }) => {
           >
             <AiFillPlayCircle /> Play Trailer
           </button>
-        </span> */}
+        </span>
       </StyledMovieContent>
     </StyledMovieOverview>
   );

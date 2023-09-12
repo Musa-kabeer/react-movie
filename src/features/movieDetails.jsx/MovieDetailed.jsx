@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import { useMovie } from "./useMovie";
 import MovieOverview from "./MovieOverview";
+import { useMovieCast } from "./useMovieCast";
+
 import MovieCast from "./MovieCast";
 import Spinner from "../../ui/Spinner";
 
@@ -16,15 +18,16 @@ const StyledDetailed = styled.div`
 
 const MovieDetailed = () => {
   const { isLoadingMovie, movie } = useMovie();
+  const { isLoadingCast, movieCast } = useMovieCast();
 
-  if (isLoadingMovie) {
+  if (isLoadingMovie || isLoadingCast) {
     return <Spinner size={120} thickness={120} />;
   }
 
   return (
     <StyledDetailed>
       <MovieOverview movie={movie} />
-      <MovieCast />
+      <MovieCast movieCast={movieCast} />
     </StyledDetailed>
   );
 };

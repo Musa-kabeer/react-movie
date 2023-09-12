@@ -7,7 +7,7 @@ export const getPopularMovies = async (page) => {
       options
     );
 
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
@@ -22,11 +22,11 @@ export const getTopRatedMovies = async (page) => {
       options
     );
 
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
-    throw new Error("There was an error while getting popular Movies");
+    throw new Error("There was an error while getting top rated Movies");
   }
 };
 
@@ -37,11 +37,11 @@ export const getUpcomingMovies = async (page) => {
       options
     );
 
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
-    throw new Error("There was an error while getting popular Movies");
+    throw new Error("There was an error while getting upcoming Movies");
   }
 };
 
@@ -52,11 +52,11 @@ export const getNowPlayingMovies = async (page) => {
       options
     );
 
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
-    throw new Error("There was an error while getting popular Movies");
+    throw new Error("There was an error while getting now playing Movies");
   }
 };
 
@@ -67,10 +67,27 @@ export const getMovieById = async (id) => {
       options
     );
 
-    const data = res.json();
+    const data = await res.json();
 
     return data;
   } catch (error) {
-    throw new Error("There was an error while getting popular Movies");
+    throw new Error(
+      `There was an error while getting movie with this id: (${id})`
+    );
+  }
+};
+
+export const getMovieCast = async (id) => {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+      options
+    );
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw new Error("There was an error while getting Movie Cast");
   }
 };
