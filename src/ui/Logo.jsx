@@ -39,11 +39,11 @@ const Logo = () => {
       <LogoSpan>🎬</LogoSpan>
       <LogoText>Movies</LogoText>
       <Links>
-        <Link>
+        <Link to={"https://github.com/Musa-kabeer"}>
           <BiLogoGithub />
         </Link>
 
-        <Link>
+        <Link to={"https://twitter.com/bakodev"}>
           <RiTwitterXFill />
         </Link>
       </Links>
